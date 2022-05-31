@@ -10,8 +10,7 @@ import {
 } from '@craco/craco';
 import AntPlugin from '@igor-lemon/antd-scss-theme-plugin';
 import cracoLess from 'craco-less';
-import type { RuleSetRule } from 'webpack';
-import type { LoaderItem, PluginOptions } from './index';
+import type { LoaderItem, PluginOptions } from './types';
 
 const throwError = (message, githubIssueQuery) =>
   throwUnexpectedConfigError({
@@ -43,12 +42,12 @@ export const updateLoader = ({
   let loaderOptions;
 
   if (loader === 'sass-loader') {
-    loaderOptions = 'saasLoaderOptions';
+    loaderOptions = 'sassLoaderOptions';
   } else {
     loaderOptions = 'lessLoaderOptions';
   }
 
-  const baseLoader: RuleSetRule = R.path(['match', 'loader'], webpackLoader);
+  const baseLoader: LoaderItem = R.path(['match', 'loader'], webpackLoader);
   const options = R.prop(loaderOptions, pluginOptions);
   let stylesLoader = baseLoader;
 
@@ -58,13 +57,14 @@ export const updateLoader = ({
   }
 
   if (!R.isEmpty(options) && typeof options === 'object') {
-    const optionsLens = R.lensProp<LoaderItem, string>('options');
+    const optionsLens = R.lensProp<LoaderItem>('options');
 
-    stylesLoader = R.compose(
-      R.set(optionsLens, R.__, baseLoader),
+    const updatedOptions = R.compose(
       R.mergeDeepLeft(options),
       R.propOr({}, 'options')
     )(baseLoader);
+
+    stylesLoader = R.set(optionsLens, updatedOptions, baseLoader);
   }
 
   const antStylesLoader = AntPlugin.themify(stylesLoader);

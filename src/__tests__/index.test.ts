@@ -9,7 +9,7 @@ import AntPlugin from '@igor-lemon/antd-scss-theme-plugin';
 import { CracoConfig, loaderByName, removeLoaders } from '@craco/craco';
 import type { RuleSetRule, RuleSetConditionAbsolute } from 'webpack';
 import * as plugin from '../index';
-import type { LoaderItem } from '../index';
+import type { LoaderItem } from '../types';
 import { checkOneOfRule, overrideCracoConfig, updateLoader } from '../index';
 import path from 'path';
 
@@ -70,12 +70,21 @@ const getRuleByCondition = (
 
 const getAntLoader = (
   condition: RuleSetConditionAbsolute
-): LoaderItem | undefined => {
+): RuleSetRule | undefined => {
   const rule = getRuleByCondition(condition);
 
   if (rule && R.has('use', rule)) {
     return R.compose(
-      R.find(R.compose(R.test(/antd-scss-theme-plugin/), R.prop('loader'))),
+      R.find((item: RuleSetRule) => {
+        if (R.has('loader', item)) {
+          return R.compose(
+            R.test(/antd-scss-theme-plugin/),
+            R.prop('loader')
+          )(item);
+        }
+
+        return false;
+      }),
       R.prop('use')
     )(rule);
   }
@@ -95,7 +104,7 @@ const lessLoaderOptions = {
   },
 };
 
-const saasLoaderOptions = {
+const sassLoaderOptions = {
   sourceMap: false,
   postcssOptions: {
     ident: 'postcss',
@@ -105,7 +114,7 @@ const saasLoaderOptions = {
 
 const options = {
   lessLoaderOptions,
-  saasLoaderOptions,
+  sassLoaderOptions,
   theme: path.resolve('./theme.scss'),
 };
 
@@ -370,7 +379,7 @@ describe('Test Craco Ant Design SCSS plugin', () => {
           {
             plugin,
             options: {
-              saasLoaderOptions,
+              sassLoaderOptions,
               theme: path.resolve('./theme.scss'),
             },
           },
@@ -380,7 +389,7 @@ describe('Test Craco Ant Design SCSS plugin', () => {
       const sassAntLoader = getAntLoader(sassRegex);
       const sassAntLoaderOptions = R.prop('options', sassAntLoader);
 
-      expect(sassAntLoaderOptions).toEqual(saasLoaderOptions);
+      expect(sassAntLoaderOptions).toEqual(sassLoaderOptions);
     });
     test('Should not set ant SASS/SCSS loader if user set "null" option', () => {
       applyCracoConfigAndOverrideWebpack({
@@ -388,7 +397,7 @@ describe('Test Craco Ant Design SCSS plugin', () => {
           {
             plugin,
             options: {
-              saasLoaderOptions: null,
+              sassLoaderOptions: null,
               theme: path.resolve('./theme.scss'),
             },
           },
