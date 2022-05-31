@@ -9,11 +9,12 @@
     "skipLibCheck": true,
   },
   "lib": ["es2015"],
-  "include": [
-    "*/src/**/*.ts",
-    "*/src/**/*.d.ts"
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+  },
+  "ignorePatterns": [
+    ".eslintrc.js"
   ],
-  "exclude": [
-    "node_modules"
-  ]
 }
