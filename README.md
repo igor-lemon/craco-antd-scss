@@ -1,1 +1,2 @@
-# craco-antd-scss
+# Craco Ant Design SCSS plugin
+
