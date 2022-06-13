@@ -9,9 +9,10 @@ import AntPlugin from '@igor-lemon/antd-scss-theme-plugin';
 import { CracoConfig, loaderByName, removeLoaders } from '@craco/craco';
 import type { RuleSetRule, RuleSetConditionAbsolute } from 'webpack';
 import * as plugin from '../index';
-import type { LoaderItem } from '../types';
 import { checkOneOfRule, overrideCracoConfig, updateLoader } from '../index';
 import path from 'path';
+
+const BASE_ENV = process.env;
 
 let webpackConfig;
 let cracoConfig;
@@ -20,6 +21,7 @@ let originalWebpackConfig;
 const context = { env: 'development', paths: craPaths };
 
 beforeEach(() => {
+  jest.resetModules()
   if (!originalWebpackConfig) {
     process.env.NODE_ENV = 'development';
     originalWebpackConfig = loadWebpackDevConfig({
@@ -29,6 +31,11 @@ beforeEach(() => {
   }
 
   webpackConfig = R.clone(originalWebpackConfig);
+  process.env = { ...BASE_ENV };
+});
+
+afterAll(() => {
+  process.env = BASE_ENV;
 });
 
 const applyCracoConfigAndOverrideWebpack = (config: CracoConfig) => {
@@ -138,6 +145,22 @@ describe('Test Craco Ant Design SCSS plugin', () => {
       const oneOfRule = getOneOfRule();
 
       expect(oneOfRule).not.toBeUndefined();
+    });
+    test('Should be correct config', () => {
+      applyCracoConfigAndOverrideWebpack({
+        plugins: [
+          {
+            plugin,
+            options,
+          },
+        ],
+      });
+
+      const lessAntRule = getAntLoader(lessRegex);
+      const sassAntRule = getAntLoader(sassRegex);
+
+      expect(lessAntRule.options).toEqual(lessLoaderOptions);
+      expect(sassAntRule.options).toEqual(sassLoaderOptions);
     });
     test('Should exits webpack plugin record', () => {
       applyCracoConfigAndOverrideWebpack({

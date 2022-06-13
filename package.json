@@ -1,10 +1,14 @@
 {
-  "name": "craco-antd-scss",
+  "name": "@igor-lemon/craco-antd-scss",
   "version": "1.0.0",
-  "description": "AntDesign SASS/SCSS plugin for craco / react-scripts / create-react-app",
+  "description": "Craco plugin for use SASS/SCSS in create-react-app projects",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "author": "Igor Kozlovsky <igor.lemon.kozlovsky@gmail.com>",
+  "files": [
+    "/dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:igor-lemon/craco-antd-scss.git"
@@ -63,5 +67,8 @@
     "**/*.{ts}": [
       "eslint --fix"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

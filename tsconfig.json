@@ -2,19 +2,19 @@
   "compilerOptions": {
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es5",
+    "target": "es2015",
+    "declaration": true,
     "moduleResolution": "node",
     "sourceMap": false,
     "outDir": "dist",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
-  "lib": ["es2015"],
   "include": ["src/**/*"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "src/**/*.test.ts"],
   "parserOptions": {
-    "project": ["./tsconfig.json"],
+    "project": ["./tsconfig.json"]
   },
   "ignorePatterns": [
     ".eslintrc.js"
-  ],
+  ]
 }
