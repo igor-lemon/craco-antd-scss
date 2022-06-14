@@ -21,7 +21,7 @@ let originalWebpackConfig;
 const context = { env: 'development', paths: craPaths };
 
 beforeEach(() => {
-  jest.resetModules()
+  jest.resetModules();
   if (!originalWebpackConfig) {
     process.env.NODE_ENV = 'development';
     originalWebpackConfig = loadWebpackDevConfig({
