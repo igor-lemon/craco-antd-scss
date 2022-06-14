@@ -11,8 +11,9 @@ The plugin based on [@igor-lemon/antd-scss-theme-plugin](https://github.com/igor
 
 ## Installation
 
-If you don't have `craco` you should to [install it before](https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#installation).
-<br/>
+- If you don't have `craco` you should to [install it before](https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#installation).
+- Install `babel-plugin-import` [package](https://github.com/umijs/babel-plugin-import).
+
 Then install `@igor-lemon/craco-antd-scss`:
 
 ```bash
@@ -60,19 +61,15 @@ The list of variables you can find here: [https://github.com/ant-design/ant-desi
 ### `lessOptions` 
 Custom Less options. [https://webpack.js.org/loaders/less-loader/#options](https://webpack.js.org/loaders/less-loader/#options)
 <br/>
-Default:
-```js
-{}
-````
+Default is `{}`
+
 Set `null` if you don't want to apply `@igor-lemon/antd-scss-theme-plugin` to the Less loader.
 
 ### `sassOptions` 
 Custom SASS/SCSS options. [https://webpack.js.org/loaders/sass-loader/#options](https://webpack.js.org/loaders/sass-loader/#options)
 <br/>
-Default:
-```js
-{}
-````
+Default is `{}`
+
 Set `null` if you don't want to apply `@igor-lemon/antd-scss-theme-plugin` to the Less loader.
 
 ###  `babelImportOptions`
