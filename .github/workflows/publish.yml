@@ -1,4 +1,4 @@
-name: "Tests"
+name: "Publish NPM"
 on:
   push:
     tags:
@@ -15,3 +15,6 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: yarn test
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
