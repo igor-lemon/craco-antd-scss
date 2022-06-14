@@ -1,8 +1,7 @@
 # Craco Ant Design SCSS plugin
 [![NPM Version](https://badge.fury.io/js/@igor-lemon%2Fcraco-antd-scss.svg)](https://badge.fury.io/js/@igor-lemon%2Fcraco-antd-scss)
-[![Tests Status](https://github.com/igor-lemon/craco-antd-scss/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/igor-lemon/craco-antd-scss/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/igor-lemon/craco-antd-scss/badge.svg?branch=master)](https://coveralls.io/github/igor-lemon/craco-antd-scss?branch=master)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Test](https://github.com/igor-lemon/craco-antd-scss/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/igor-lemon/craco-antd-scss/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/igor-lemon/craco-antd-scss/badge.svg?branch=main)](https://coveralls.io/github/igor-lemon/craco-antd-scss?branch=main)[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## About
 `@igor-lemon/craco-antd-scss` is a [Craco](https://github.com/sharegate/craco) plugin which allows you to use SASS/SCSS in your [create-react-app](https://facebook.github.io/create-react-app/) `^5.0.0` projects with [Ant Design](https://github.com/ant-design/ant-design/).
