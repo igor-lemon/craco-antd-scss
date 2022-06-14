@@ -1,6 +1,6 @@
 # Craco Ant Design SCSS plugin
-
-[![Test Status](https://github.com/igor-lemon/craco-antd-scss/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/igor-lemon/craco-antd-scss/actions/workflows/test.yml)
+[![NPM Version](https://badge.fury.io/js/@igor-lemon%2Fcraco-antd-scss.svg)](https://badge.fury.io/js/@igor-lemon%2Fcraco-antd-scss)
+[![Tests Status](https://github.com/igor-lemon/craco-antd-scss/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/igor-lemon/craco-antd-scss/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/igor-lemon/craco-antd-scss/badge.svg?branch=master)](https://coveralls.io/github/igor-lemon/craco-antd-scss?branch=master)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
