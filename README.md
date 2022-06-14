@@ -1,5 +1,9 @@
 # Craco Ant Design SCSS plugin
 
+[![actions-workflow-test][actions-workflow-test-badge]][actions-workflow-test]
+[![release][release-badge]][release]
+[![license][license-badge]][license]
+
 ## About
 `@igor-lemon/craco-antd-scss` is a [Craco](https://github.com/sharegate/craco) plugin which allows you to use SASS/SCSS in your [create-react-app](https://facebook.github.io/create-react-app/) `^5.0.0` projects with [Ant Design](https://github.com/ant-design/ant-design/).
 
